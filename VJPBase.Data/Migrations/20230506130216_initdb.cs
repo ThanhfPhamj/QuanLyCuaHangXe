@@ -244,6 +244,7 @@ namespace VJPBase.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SoLuong = table.Column<int>(type: "int", nullable: false),
                     GiaBan = table.Column<float>(type: "real", nullable: false),
+                    ThanhTien = table.Column<float>(type: "real", nullable: false),
                     DaXoa = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>

@@ -31,6 +31,7 @@ namespace VJPBase.Data.Entities
 
         public float GiaBan { get; set; }
 
+        public float ThanhTien { get; set; }
         public bool DaXoa { get; set; }
 
     }

@@ -10,7 +10,7 @@ using VJPBase.Data;
 namespace VJPBase.Data.Migrations
 {
     [DbContext(typeof(CuaHangXeDbContext))]
-    [Migration("20230505164917_initdb")]
+    [Migration("20230506130216_initdb")]
     partial class initdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,9 @@ namespace VJPBase.Data.Migrations
 
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
+
+                    b.Property<float>("ThanhTien")
+                        .HasColumnType("real");
 
                     b.HasKey("MaXe", "MaHoaDon");
 

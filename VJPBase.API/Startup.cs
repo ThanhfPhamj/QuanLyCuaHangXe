@@ -49,6 +49,7 @@ namespace VJPBase.API
             services.AddScoped<IXeService, XeService>();
             services.AddScoped<IHangXeService, HangXeService>();
             services.AddScoped<ICuaHangService, CuaHangService>();
+            services.AddScoped<IHoaDonService, HoaDonService>();
 
             services.AddSwaggerGen(c =>
             {

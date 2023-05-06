@@ -41,6 +41,9 @@ namespace VJPBase.Data.Migrations
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
 
+                    b.Property<float>("ThanhTien")
+                        .HasColumnType("real");
+
                     b.HasKey("MaXe", "MaHoaDon");
 
                     b.HasIndex("MaHoaDon");
