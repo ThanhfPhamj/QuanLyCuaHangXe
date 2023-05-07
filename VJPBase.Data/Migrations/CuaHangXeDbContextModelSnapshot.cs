@@ -27,16 +27,16 @@ namespace VJPBase.Data.Migrations
                     b.Property<int>("MaHoaDon")
                         .HasColumnType("int");
 
+                    b.Property<int>("MaChiTietHoaDon")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<bool>("DaXoa")
                         .HasColumnType("bit");
 
                     b.Property<float>("GiaBan")
                         .HasColumnType("real");
-
-                    b.Property<int>("MaChiTietHoaDon")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
@@ -44,7 +44,7 @@ namespace VJPBase.Data.Migrations
                     b.Property<float>("ThanhTien")
                         .HasColumnType("real");
 
-                    b.HasKey("MaXe", "MaHoaDon");
+                    b.HasKey("MaXe", "MaHoaDon", "MaChiTietHoaDon");
 
                     b.HasIndex("MaHoaDon");
 

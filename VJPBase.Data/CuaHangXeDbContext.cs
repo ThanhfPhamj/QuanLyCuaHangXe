@@ -66,7 +66,7 @@ namespace VJPBase.Data
 
             //CHI TIET HOA DON
             modelBuilder.Entity<ChiTietHoaDon>()
-               .HasKey(t => new { t.MaXe, t.MaHoaDon });
+               .HasKey(t => new { t.MaXe, t.MaHoaDon ,t.MaChiTietHoaDon});
 
             modelBuilder.Entity<ChiTietHoaDon>()
                 .HasOne(t => t.Xe)

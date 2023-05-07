@@ -50,7 +50,7 @@ namespace VJPBase.API
             services.AddScoped<IHangXeService, HangXeService>();
             services.AddScoped<ICuaHangService, CuaHangService>();
             services.AddScoped<IHoaDonService, HoaDonService>();
-
+            services.AddScoped<IChiTietHoaDonService, ChiTietHoaDonService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "VJPBase.API", Version = "v1" });

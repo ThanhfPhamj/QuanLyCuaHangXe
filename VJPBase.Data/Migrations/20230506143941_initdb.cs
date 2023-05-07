@@ -238,10 +238,10 @@ namespace VJPBase.Data.Migrations
                 name: "ChiTietHoaDons",
                 columns: table => new
                 {
-                    MaHoaDon = table.Column<int>(type: "int", nullable: false),
-                    MaXe = table.Column<int>(type: "int", nullable: false),
                     MaChiTietHoaDon = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    MaHoaDon = table.Column<int>(type: "int", nullable: false),
+                    MaXe = table.Column<int>(type: "int", nullable: false),
                     SoLuong = table.Column<int>(type: "int", nullable: false),
                     GiaBan = table.Column<float>(type: "real", nullable: false),
                     ThanhTien = table.Column<float>(type: "real", nullable: false),
@@ -249,7 +249,7 @@ namespace VJPBase.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ChiTietHoaDons", x => new { x.MaXe, x.MaHoaDon });
+                    table.PrimaryKey("PK_ChiTietHoaDons", x => new { x.MaXe, x.MaHoaDon, x.MaChiTietHoaDon });
                     table.ForeignKey(
                         name: "FK_ChiTietHoaDons_HoaDons_MaHoaDon",
                         column: x => x.MaHoaDon,
