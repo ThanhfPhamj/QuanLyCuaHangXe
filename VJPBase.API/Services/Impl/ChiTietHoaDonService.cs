@@ -94,6 +94,18 @@ namespace VJPBase.API.Services.Impl
                 tonTaiCTHD.DaXoa = false;
                 _context.ChiTietHoaDons.Update(tonTaiCTHD);
                 _context.SaveChanges();
+                var updateTongTien = _context.ChiTietHoaDons.Where(c => !c.DaXoa && c.MaHoaDon == suaCTHD.MaHoaDon).ToList();
+                if (updateTongTien != null)
+                {
+                    foreach (var item in updateTongTien)
+                    {
+                        var tongTienHoaDon = _context.HoaDons.Where(c => c.MaHoaDon == suaCTHD.MaHoaDon).FirstOrDefault();
+                        tongTienHoaDon.TongTien = +item.ThanhTien;
+                        _context.HoaDons.Update(tongTienHoaDon);
+                        _context.SaveChanges();
+                    }
+
+                }
             }
 
         }
