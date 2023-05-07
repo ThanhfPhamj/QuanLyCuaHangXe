@@ -5,6 +5,7 @@ using VJPBase.Data;
 using System.Linq;
 using VJPBase.API.Models.Requests.ChiTietHoaDonRequest;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System.Xml.Schema;
 
 namespace VJPBase.API.Services.Impl
 {
@@ -46,8 +47,21 @@ namespace VJPBase.API.Services.Impl
                     DaXoa = false
                 }) ;
                 cthd.SaveChanges();
+                var updateTongTien = _context.ChiTietHoaDons.Where(c => !c.DaXoa && c.MaHoaDon == themCTHD.MaHoaDon).ToList();
+                if (updateTongTien != null)
+                {
+                   foreach(var item in updateTongTien)
+                    {
+                        var tongTienHoaDon = _context.HoaDons.Where(c => c.MaHoaDon == themCTHD.MaHoaDon).FirstOrDefault();
+                        tongTienHoaDon.TongTien = +item.ThanhTien;
+                        _context.HoaDons.Update(tongTienHoaDon);
+                        _context.SaveChanges();
+                    }
+                   
+                }
             }
         }
+        
         public float ThanhTien(ThemCTHD themCTHD)
         {
             float thanhtien;

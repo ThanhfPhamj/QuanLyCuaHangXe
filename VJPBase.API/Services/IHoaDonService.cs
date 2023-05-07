@@ -8,7 +8,7 @@ namespace VJPBase.API.Services
 {
     public interface IHoaDonService
     {
-        //HoaDonRespone HienThiHoaDon(ThemHoaDon themHoaDon);
+        List<HoaDon> ThongKeTheoThang(int thang);
         IEnumerable<HoaDon> GetAll();
         HoaDon GetById(int id);
 

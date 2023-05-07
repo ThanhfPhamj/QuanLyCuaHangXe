@@ -14,6 +14,7 @@ namespace VJPBase.API.Services
         float ThanhTien(ThemCTHD themCTHD);
 
         float ThanhTien(SuaCTHD suaCTHD);
+
         void SuaCTHD(int id ,SuaCTHD suaCTHD);
         void XoaCTHD(int id);
     }

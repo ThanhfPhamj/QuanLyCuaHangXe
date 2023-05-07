@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VJPBase.API.Models.Requests.HangXeRequest;
 using VJPBase.API.Models.Requests.HoaDonRequest;
+using VJPBase.API.Models.Response;
 using VJPBase.API.Services;
 using VJPBase.API.Services.Impl;
 
@@ -15,6 +16,12 @@ namespace VJPBase.API.Controllers
         public HoaDonController(IHoaDonService hoaDonService)
         {
             _hoaDonService = hoaDonService;
+        }
+        [HttpGet("ThongKeTheoThang/{thang}")]
+        public IActionResult ThongKeTheoThang(int thang)
+        {
+            var hd = _hoaDonService.ThongKeTheoThang(thang);
+            return Ok(hd);
         }
         [HttpGet]
         public IActionResult GetAll()

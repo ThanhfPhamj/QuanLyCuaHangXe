@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using VJPBase.API.Models.Requests.HangXeRequest;
+using System.Xml.Schema;
 using VJPBase.API.Models.Requests.HoaDonRequest;
 using VJPBase.Data;
 using VJPBase.Data.Entities;
@@ -15,6 +16,13 @@ namespace VJPBase.API.Services.Impl
         {
             _context = context;
 
+        }
+        public List<HoaDon> ThongKeTheoThang(int thang)
+        {
+            var salesByMonth = _context.HoaDons
+                .Where(c => !c.DaXoa && c.NgayBan.Month == thang )
+                .ToList();
+            return salesByMonth;
         }
         public IEnumerable<HoaDon> GetAll()
         {
@@ -33,6 +41,7 @@ namespace VJPBase.API.Services.Impl
 
         public void ThemHoaDon(ThemHoaDon themHoaDon)
         {
+          
             using (var hd = new CuaHangXeDbContext())
             {
                 hd.HoaDons.Add(new HoaDon()
@@ -44,11 +53,11 @@ namespace VJPBase.API.Services.Impl
                     DaXoa = false
                 });
                 hd.SaveChanges();
-                
+
             }
-              
+
         }
-        
+
         public void XoaHoaDon(int id)
         {
             var hoaDonCanXoa = GetById(id);
@@ -63,7 +72,7 @@ namespace VJPBase.API.Services.Impl
                 _context.SaveChanges();
                 var hoaDonDaXoa = _context.ChiTietHoaDons.Where(xe => xe.MaHoaDon == id).ToList();
                 foreach (var item in hoaDonDaXoa)
-                {                 
+                {
                     item.DaXoa = true;
                     _context.ChiTietHoaDons.Update(item);
                     _context.SaveChanges();
